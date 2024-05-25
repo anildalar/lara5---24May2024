@@ -28,8 +28,25 @@ class CustomUserController extends Controller
      */
     public function store(Request $request)
     {
+        //We have to do ServerSide validation
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required|confirmed|min:8',
+            'password_confirmation'=>'required:min:8'
+        ]);
+
+        //dd($request->all()); // Dump and Die
+
+        //SO now my data is valid
+        //I want to store into db and
+
+        //1. Query
+        //2. Eleqouent
+        CustomUser::create($request->all());
+        //Dump all the incomming data
         //
-        return 'store method';
+        return redirect("/register")->withSuccess('User Registered successfully');
     }
 
     /**

@@ -2,9 +2,10 @@
 
 @section('content')
     <h1 class="text-center mt-5">Registration Form  <a href="{{ route('loginroute') }}">Go to Login Page</a></h1>
-    @if ($message = Session::get('succcess'))
-        <div class="alert alert-success">
-            {{ $message }}
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ session('success') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
     <form method="POST" action="/user">

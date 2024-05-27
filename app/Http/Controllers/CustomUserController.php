@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Hash;
 use App\Models\CustomUser;
 use Illuminate\Http\Request;
 
@@ -43,9 +45,19 @@ class CustomUserController extends Controller
 
         //1. Query
         //2. Eleqouent
-        CustomUser::create($request->all());
+        //$data is a normal variable
+        $data = $request->all(); // Associativity of operator equal
+        var_dump($data["password"]);
+                        //Class::method)
+                        //:: Scope Resolution operator
+        $data['password'] = Hash::make($data['password']);
+        
+        //dd($data);
+
+        CustomUser::create($data);
         //Dump all the incomming data
         //
+        //THis will be a session variable 
         return redirect("/register")->withSuccess('User Registered successfully');
     }
 

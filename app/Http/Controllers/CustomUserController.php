@@ -48,9 +48,9 @@ class CustomUserController extends Controller
         //$data is a normal variable
         $data = $request->all(); // Associativity of operator equal
         var_dump($data["password"]);
-                        //Class::method)
+                        //Class::method())
                         //:: Scope Resolution operator
-        $data['password'] = Hash::make($data['password']);
+        $data['password'] = md5($data['password']);
         
         //dd($data);
 

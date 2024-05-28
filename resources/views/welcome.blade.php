@@ -6,6 +6,6 @@
         <title>Welcome Page</title>
     </head>
     <body>
-        <h1>Welcome Anil</h1>
+        <h1>Welcome {{ session('username') }}</h1>
     </body>
 </html>
